@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Amazon Review Analyzer",
+  "version": "1.0",
+  "description": "Analyzes Amazon product reviews for pain points and selling points using ChatGPT",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://www.amazon.com/*"
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.amazon.com/*"],
+      "js": ["src/contentScript.ts"]
+    }
+  ],
+  "background": {
+    "service_worker": "src/background.ts",
+    "type": "module"
+  }
+}
